@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Comprensión: Bajar de la Mente</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            color: #2c3e50;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .quiz-container {
+            background-color: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #1a365d;
+            font-size: 24px;
+            margin-top: 0;
+            border-bottom: 2px solid #5f7d95;
+            padding-bottom: 10px;
+        }
+        .author-info {
+            font-size: 13px;
+            color: #718096;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #edf2f7;
+        }
+        .question-text {
+            font-weight: 600;
+            font-size: 16px;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .option-btn {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover {
+            background-color: #edf2f7;
+            border-color: #cbd5e1;
+        }
+        .option-btn.correct {
+            background-color: #def7ec;
+            border-color: #31c48d;
+            color: #03543f;
+            font-weight: bold;
+        }
+        .option-btn.incorrect {
+            background-color: #fde8e8;
+            border-color: #f05252;
+            color: #9b1c1c;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.4;
+        }
+        .feedback.correct-bg {
+            display: block;
+            background-color: #edfbf7;
+            color: #03543f;
+            border-left: 4px solid #31c48d;
+        }
+        .feedback.incorrect-bg {
+            display: block;
+            background-color: #fdf2f2;
+            color: #9b1c1c;
+            border-left: 4px solid #f05252;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Test de Alternativas: Bajar de la Mente</h1>
+    <div class="author-info">Libro: Presencia Plena — Autores: C. Segú, G. Brito, C. Araya</div>
+
+    <div class="question" id="q1">
+        <div class="question-text">1. De acuerdo con el texto, ¿cuál es considerado el primer dispositivo generador de realidad virtual de la especie humana?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q1', 0, false)">A) Las pantallas digitales de los teléfonos y tablets modernos.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 1, true)">B) El desarrollo evolutivo del neo-córtex en nuestro cerebro.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 2, false)">C) La tecnología de efectos especiales desarrollada en Hollywood.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 3, false)">D) El estado de meditación profunda o Zen.</button>
+        </div>
+        <div class="feedback" id="fb-q1"></div>
+    </div>
+
+    <div class="question" id="q2">
+        <div class="question-text">2. ¿Qué ventaja evolutiva indiscutible otorgó el neo-córtex a los seres humanos según los autores?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q2', 0, false)">A) La capacidad de mantenernos enfocados en el cuerpo de forma automática.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 1, false)">B) El desarrollo de extensiones tecnológicas de bolsillo.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 2, true)">C) El acceso al pensamiento abstracto para resolver creativamente los desafíos del entorno.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 3, false)">D) La habilidad de vivir vidas paralelas en entornos puramente digitales.</button>
+        </div>
+        <div class="feedback" id="fb-q2"></div>
+    </div>
+
+    <div class="question" id="q3">
+        <div class="question-text">3. ¿A qué se refieren los neurocientíficos actuales con el término "default mode" o modo "por defecto" del cerebro?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q3', 0, false)">A) A un estado de concentración absoluta en una tarea de alta prioridad.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 1, false)">B) Al estado meditativo ideal que se alcanza mediante ejercicios de respiración conscientes.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 2, false)">C) A la desconexión total del sistema nervioso cuando el cuerpo duerme.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 3, true)">D) Al burbujeo de pensamientos e historias autorreferenciales cuando no tenemos nada específico que hacer.</button>
+        </div>
+        <div class="feedback" id="fb-q3"></div>
+    </div>
+
+    <div class="question" id="q4">
+        <div class="question-text">4. En la sección de prácticas, ¿cuál es el propósito principal de llevar la atención a la respiración en el bajo vientre o a la planta de los pies?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q4', 0, false)">A) Aumentar la capacidad de almacenamiento y memoria del neo-córtex.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 1, false)">B) Fomentar la creación de narrativas más complejas en nuestra 'telenovela mental'.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 2, false)">C) Disminuir la actividad física para evitar el movimiento del cuerpo.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 3, true)">D) Bajar la energía desde la cabeza hacia el cuerpo, aterrizando en el momento presente.</button>
+        </div>
+        <div class="feedback" id="fb-q4"></div>
+    </div>
+
+    <div class="question" id="q5">
+        <div class="question-text">5. ¿Cuáles son algunas de las vías descritas como no explícitamente "meditativas" que ayudan a salir de la realidad virtual de la mente?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q5', 0, true)">A) El contacto afectivo consciente, el servicio a otros y la apreciación estética de la naturaleza o el arte.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 1, false)">B) Ver películas sofisticadas en formatos avanzados como 3D o 4DX en el cine.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 2, false)">C) Planificar detalladamente las próximas vacaciones desde la comodidad del sofá.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 3, false)">D) Incrementar el tiempo de uso diario de pantallas de laptops y tablets.</button>
+        </div>
+        <div class="feedback" id="fb-q5"></div>
+    </div>
+</div>
+
+<script>
+    const rationales = {
+        q1: "¡Correcto! El autor define al neo-córtex como un sofisticado 'casco de realidad virtual' interno que nos permite viajar en el espacio y el tiempo a nivel mental.",
+        q2: "¡Correcto! El texto destaca que el pensamiento abstracto permite al ser humano imaginar, categorizar y planificar para responder con éxito a presiones ambientales y depredadores.",
+        q3: "¡Correcto! El texto indica que en el modo por defecto el cerebro se llena automáticamente de monólogos y guiones sobre el 'yo' (deseos, temores y preocupaciones).",
+        q4: "¡Correcto! Llevar el foco atencional hacia zonas físicas inferiores (pies, respiración abdominal) actúa como una estrategia potente para enraizarse y salir de la rumiación.",
+        q5: "¡Correcto! Gestos cotidianos como abrazar a un ser querido, ayudar, o contemplar la naturaleza y el arte son descritos como puentes directos al momento presente."
+    };
+
+    const wrongFeedback = "Respuesta incorrecta. Inténtalo de nuevo revisando los conceptos clave del texto.";
+
+    function checkAnswer(questionId, optionIndex, isCorrect) {
+        const questionDiv = document.getElementById(questionId);
+        const buttons = questionDiv.getElementsByClassName('option-btn');
+        const feedbackDiv = document.getElementById('fb-' + questionId);
+
+        // Limpiar estados anteriores de los botones de esta pregunta
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('correct', 'incorrect');
+        }
+
+        if (isCorrect) {
+            buttons[optionIndex].classList.add('correct');
+            feedbackDiv.textContent = rationales[questionId];
+            feedbackDiv.className = "feedback correct-bg";
+        } else {
+            buttons[optionIndex].classList.add('incorrect');
+            feedbackDiv.textContent = wrongFeedback;
+            feedbackDiv.className = "feedback incorrect-bg";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Contenido: Presencia Plena</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f5f8;
+            color: #2c3e50;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .quiz-container {
+            background-color: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        h1 {
+            color: #0f2d59;
+            font-size: 24px;
+            margin-top: 0;
+            border-bottom: 2px solid #6b8fa8;
+            padding-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #718096;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .question-text {
+            font-weight: 600;
+            font-size: 16px;
+            color: #1a202c;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .option-btn {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            line-height: 1.4;
+        }
+        .option-btn:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+        .option-btn.correct {
+            background-color: #def7ec;
+            border-color: #31c48d;
+            color: #03543f;
+            font-weight: bold;
+        }
+        .option-btn.incorrect {
+            background-color: #fde8e8;
+            border-color: #f05252;
+            color: #9b1c1c;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.4;
+        }
+        .feedback.correct-bg {
+            display: block;
+            background-color: #f0fdf4;
+            color: #166534;
+            border-left: 4px solid #22c55e;
+        }
+        .feedback.incorrect-bg {
+            display: block;
+            background-color: #fef2f2;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Cuestionario de Estudio: Presencia Plena</h1>
+    <div class="subtitle">Estrategias de enraizamiento y el "Modo por defecto" de la mente</div>
+
+    <div class="question" id="q1">
+        <div class="question-text">1. ¿Qué consecuencia tiene para el ser humano moderno vivir constantemente atrapado en la "telenovela mental" de sus pensamientos?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q1', 0, false)">A) Potencia la velocidad de respuesta del pensamiento lógico-matemático.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 1, true)">B) Convierte el cuerpo en un simple apéndice que obstruye nuestras ideas y nos quita el control del tiempo.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 2, false)">C) Facilita la desconexión total del neo-córtex para dar prioridad a los reflejos físicos.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 3, false)">D) Desarrolla una mayor empatía hacia las necesidades inmediatas de nuestro entorno social.</button>
+        </div>
+        <div class="feedback" id="fb-q1"></div>
+    </div>
+
+    <div class="question" id="q2">
+        <div class="question-text">2. De acuerdo con la metáfora de Hollywood descrita en la lectura, ¿qué relación existe entre la estimulación técnica sofisticada (pantallas, efectos 3D/4DX) y nuestra experiencia interna?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q2', 0, false)">A) A mayor realismo de los efectos visuales, más profunda y rica se vuelve la trama de nuestra vida.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 1, false)">B) Los estímulos tecnológicos de bolsillo expanden la capacidad adaptativa del neo-córtex.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 2, true)">C) Mientras más complejos son los efectos especiales exteriores, más vacía y empobrecida queda nuestra experiencia real.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 3, false)">D) La tecnología digital recrea con total exactitud las sensaciones físicas del momento presente.</button>
+        </div>
+        <div class="feedback" id="fb-q2"></div>
+    </div>
+
+    <div class="question" id="q3">
+        <div class="question-text">3. Fisiológicamente, ¿por qué centrar la atención en la respiración abdominal profunda es una herramienta tan potente?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q3', 0, true)">A) Porque la dirección de la atención moviliza la energía corporal, permitiendo "bajarla" desde la actividad intelectual de la cabeza hacia el cuerpo.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 1, false)">B) Porque incrementa artificialmente el volumen de oxígeno que necesita retener el neo-córtex.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 2, false)">C) Porque activa el "default mode" necesario para generar nuevas proyecciones a futuro.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 3, false)">D) Porque detiene por completo el flujo de la circulación sanguínea hacia el sistema nervioso central.</button>
+        </div>
+        <div class="feedback" id="fb-q3"></div>
+    </div>
+
+    <div class="question" id="q4">
+        <div class="question-text">4. ¿Qué técnica de enraizamiento físico propone el texto que se puede camuflar y practicar fácilmente en actividades de la vida diaria, como hacer la fila de un banco?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q4', 0, false)">A) La respiración profunda con retención forzada por más de 10 ciclos por minuto.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 1, false)">B) La meditación Zen en postura de loto con los ojos completamente cerrados.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 2, true)">C) La práctica de la caminata consciente, manteniendo el foco en el contacto de los pies con el suelo.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 3, false)">D) La apreciación estética de obras de arte complejas en un dispositivo móvil.</button>
+        </div>
+        <div class="feedback" id="fb-q4"></div>
+    </div>
+
+    <div class="question" id="q5">
+        <div class="question-text">5. Según los autores, ¿cuál es el principal indicador de que los seres humanos estamos diseñados para vivir experiencias cotidianas de presencia plena (como abrazar a un ser querido o contemplar la naturaleza)?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q5', 0, false)">A) La capacidad técnica de registrar estas interacciones en nuestras redes sociales.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 1, false)">B) La optimización del pensamiento abstracto para categorizar nuestro entorno.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 2, false)">C) El aumento en el tiempo que logramos permanecer sentados en un sofá sin movernos.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 3, true)">D) El surgimiento claro de una alegría natural y espontánea que brota de esos pequeños gestos cotidianos.</button>
+        </div>
+        <div class="feedback" id="fb-q5"></div>
+    </div>
+</div>
+
+<script>
+    const rationales = {
+        q1: "¡Correcto! El texto menciona que cuando la mente se atiborra, pasamos a ser 'usados por el tiempo' y el cuerpo se experimenta como un obstáculo flotante para nuestras ideas.",
+        q2: "¡Correcto! Los autores comparan el exceso de tecnología con las salas de cine hipermodernas: muchos efectos espectaculares pero tramas argumentales cada vez más pobres y vacías.",
+        q3: "¡Correcto! Dirigir conscientemente la atención es la estrategia clave del libro para desplazar la carga energética e intelectual desde la cabeza hacia la experiencia física real.",
+        q4: "¡Correcto! La caminata consciente puede realizarse de un punto a otro en el trabajo o en una fila ordinaria, convirtiendo cualquier espacio en una oportunidad de enraizamiento.",
+        q5: "¡Correcto! La alegría espontánea y natural que se siente en esos momentos de conexión genuina es, para los autores, el indicador definitivo de nuestra naturaleza biológica."
+    };
+
+    const wrongFeedback = "Respuesta incorrecta. Revisa el sentido del texto e intenta conectar la atención de nuevo.";
+
+    function checkAnswer(questionId, optionIndex, isCorrect) {
+        const questionDiv = document.getElementById(questionId);
+        const buttons = questionDiv.getElementsByClassName('option-btn');
+        const feedbackDiv = document.getElementById('fb-' + questionId);
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('correct', 'incorrect');
+        }
+
+        if (isCorrect) {
+            buttons[optionIndex].classList.add('correct');
+            feedbackDiv.textContent = rationales[questionId];
+            feedbackDiv.className = "feedback correct-bg";
+        } else {
+            buttons[optionIndex].classList.add('incorrect');
+            feedbackDiv.textContent = wrongFeedback;
+            feedbackDiv.className = "feedback incorrect-bg";
+        }
+    }
+</script>
+
+</body>
+</html>

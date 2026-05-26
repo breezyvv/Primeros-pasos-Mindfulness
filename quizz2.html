@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario: El Poder de la Interocepción - Nazaret Castellanos</title>
+    <style>
+        /* Paleta de colores editorial de bienestar: Crema (#fbfaf7), Marrón Tierra (#8c6239), Verde Azulado Apagado (#5f7d95) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fbfaf7;
+            color: #3e2723; /* Marrón oscuro para máxima legibilidad y calidez */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .quiz-container {
+            background-color: #ffffff;
+            max-width: 650px;
+            width: 100%;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(140, 98, 57, 0.06);
+            border: 1px solid #f0eae1;
+        }
+        h1 {
+            color: #8c6239; /* Marrón Tierra */
+            font-size: 24px;
+            margin-top: 0;
+            border-bottom: 2px solid #5f7d95; /* Verde Azulado Apagado */
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #5f7d95;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .question {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f0eae1;
+        }
+        .question-text {
+            font-weight: 600;
+            font-size: 16px;
+            color: #3e2723;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-btn {
+            background-color: #fdfdfd;
+            border: 1px solid #e1dcd5;
+            border-radius: 8px;
+            padding: 14px 18px;
+            text-align: left;
+            font-size: 14px;
+            color: #5d4037;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            line-height: 1.4;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .option-btn:hover {
+            background-color: #f7f3ed;
+            border-color: #8c6239;
+        }
+        .option-btn.correct {
+            background-color: #e2f0d9;
+            border-color: #70ad47;
+            color: #2b5115;
+            font-weight: bold;
+        }
+        .option-btn.incorrect {
+            background-color: #fce4d6;
+            border-color: #c00000;
+            color: #c00000;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.5;
+        }
+        .feedback.correct-bg {
+            display: block;
+            background-color: #f1f8e9;
+            color: #2b5115;
+            border-left: 4px solid #70ad47;
+        }
+        .feedback.incorrect-bg {
+            display: block;
+            background-color: #fff3e0;
+            color: #c00000;
+            border-left: 4px solid #c00000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Cuestionario: El Poder de la Interocepción</h1>
+    <div class="subtitle">Evaluación interactiva basada en Nazaret Castellanos</div>
+
+    <!-- Pregunta 1 -->
+    <div class="question" id="q1">
+        <div class="question-text">1. Según Nazaret Castellanos, ¿qué es exactamente la "interocepción"?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q1', 0, false)">A) La habilidad de oír, ver y tocar los ruidos y estímulos que provienen de nuestro entorno físico inmediato.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 1, true)">B) La capacidad de percibir las señales internas de nuestro cuerpo, como el ritmo cardíaco, la respiración, la temperatura o el hambre.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 2, false)">C) Un mecanismo psicológico para racionalizar e inventar historias complejas que justifiquen nuestro estrés.</button>
+            <button class="option-btn" onclick="checkAnswer('q1', 3, false)">D) La capacidad técnica del neo-córtex para ignorar el dolor del cuerpo y aumentar la productividad diaria.</button>
+        </div>
+        <div class="feedback" id="fb-q1"></div>
+    </div>
+
+    <!-- Pregunta 2 -->
+    <div class="question" id="q2">
+        <div class="question-text">2. De acuerdo con el video, ¿qué sucede a nivel corporal antes de que nuestra mente sea capaz de etiquetar de forma consciente una emoción como el miedo?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q2', 0, false)">A) El cerebro bloquea toda la actividad de la corteza cerebral para evitar un colapso de ansiedad.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 1, false)">B) La mente formula rápidamente una justificación lógica y luego altera el ritmo del corazón.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 2, true)">C) El cuerpo ya lo sabe y nos envía señales previas como un vacío en el pecho o un cosquilleo en el abdomen.</button>
+            <button class="option-btn" onclick="checkAnswer('q2', 3, false)">D) Se activa una respuesta puramente visual que aumenta la agudeza del ojo externo.</button>
+        </div>
+        <div class="feedback" id="fb-q2"></div>
+    </div>
+
+    <!-- Pregunta 3 -->
+    <div class="question" id="q3">
+        <div class="question-text">3. ¿Cuáles son los beneficios de tener y entrenar una "buena interocepción"?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q3', 0, true)">A) Permite reconocer las emociones antes de que se desborden, regular mejor el estrés y tomar decisiones más alineadas con lo que necesitamos.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 1, false)">B) Facilita la capacidad de trabajar por más horas continuas frente a pantallas sin sentir cansancio físico.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 2, false)">C) Ayuda a eliminar por completo cualquier tipo de emoción incómoda como el miedo, la tristeza o el enojo.</button>
+            <button class="option-btn" onclick="checkAnswer('q3', 3, false)">D) Permite que la mente invente explicaciones más detalladas y racionales para convencer a los demás.</button>
+        </div>
+        <div class="feedback" id="fb-q3"></div>
+    </div>
+
+    <!-- Pregunta 4 -->
+    <div class="question" id="q4">
+        <div class="question-text">4. Si tienes insomnio o estás tenso en la cama dando vueltas, ¿cómo te ayuda la interocepción a calmar la mente?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q4', 0, false)">A) Pensando de forma continua en las responsabilidades que tienes pendientes al día siguiente.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 1, false)">B) Buscando distractores visuales externos en un celular o tablet para agotar la vista.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 2, true)">C) Reconociendo los músculos tensos, la mandíbula apretada y la respiración corta para poder regularlas, aflojar los hombros y alargar la respiración.</button>
+            <button class="option-btn" onclick="checkAnswer('q4', 3, false)">D) Obligando a tu mente a ignorar el cuerpo hasta que se duerma por inercia intelectual.</button>
+        </div>
+        <div class="feedback" id="fb-q4"></div>
+    </div>
+
+    <!-- Pregunta 5 -->
+    <div class="question" id="q5">
+        <div class="question-text">5. ¿Qué estructura cerebral es descrita en la transcripción como "la intérprete del cuerpo"?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q5', 0, false)">A) El cerebelo, encargado de coordinar de forma inconsciente el equilibrio físico de las piernas.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 1, false)">B) El nervio vago, que conecta directamente los pulmones con el intestino.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 2, true)">C) La ínsula, una región clave en lo profundo de la corteza cerebral que recibe las señales internas y las traduce en experiencias conscientes.</button>
+            <button class="option-btn" onclick="checkAnswer('q5', 3, false)">D) La corteza visual secundaria, que procesa las formas y colores de la naturaleza.</button>
+        </div>
+        <div class="feedback" id="fb-q5"></div>
+    </div>
+
+    <!-- Pregunta 6 -->
+    <div class="question" id="q6">
+        <div class="question-text">6. De acuerdo con el texto, ¿qué ejercicios prácticos y cotidianos podemos hacer para entrenar y mejorar nuestra interocepción?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q6', 0, false)">A) Realizar actividades de alta intensidad física manteniendo la mente enfocada en estímulos externos.</button>
+            <button class="option-btn" onclick="checkAnswer('q6', 1, false)">B) Memorizar datos sobre el nervio vago y la ínsula leyendo artículos científicos complejos.</button>
+            <button class="option-btn" onclick="checkAnswer('q6', 2, true)">C) Prestar atención a la respiración en el día a día, hacer escaneos corporales de pies a cabeza, caminar descalzos, beber agua sintiendo su temperatura o comer con atención.</button>
+            <button class="option-btn" onclick="checkAnswer('q6', 3, false)">D) Pasar más tiempo analizando en el sofá las conversaciones conflictivas que tuvimos en el pasado.</button>
+        </div>
+        <div class="feedback" id="fb-q6"></div>
+    </div>
+
+    <!-- Pregunta 7 -->
+    <div class="question" id="q7">
+        <div class="question-text">7. ¿Por qué afirma Nazaret Castellanos que "el cuerpo no miente", a diferencia de nuestra mente?</div>
+        <div class="options">
+            <button class="option-btn" onclick="checkAnswer('q7', 0, false)">A) Porque la mente y el cuerpo operan de manera completamente independiente y aislada de los procesos biológicos.</button>
+            <button class="option-btn" onclick="checkAnswer('q7', 1, true)">B) Porque la mente puede inventar historias, justificar o postergar, pero el cuerpo dice la verdad honesta en forma de un latido acelerado, peso en el pecho o suspiro profundo.</button>
+            <button class="option-btn" onclick="checkAnswer('q7', 2, false)">C) Porque el sistema inmunológico impide físicamente que el cerebro elabore recuerdos falsos o alterados.</button>
+            <button class="option-btn" onclick="checkAnswer('q7', 3, false)">D) Porque la ínsula detiene la rumiación de forma biológicamente forzada cuando mentimos.</button>
+        </div>
+        <div class="feedback" id="fb-q7"></div>
+    </div>
+</div>
+
+<script>
+    const rationales = {
+        q1: "¡Correcto! En la transcripción, Nazaret Castellanos explica que la interocepción consiste en percibir y sentir desde dentro lo que le ocurre a nuestro propio organismo.",
+        q2: "¡Correcto! El cuerpo percibe el entorno y activa reacciones fisiológicas (como el cosquilleo o la opresión en el pecho) antes de que la mente traduzca conscientemente la sensación en una palabra o etiqueta.",
+        q3: "¡Correcto! La neurocientífica señala que afinar la escucha de estos avisos fisiológicos nos dota de herramientas directas para gestionar el estrés cotidiano de manera adaptativa.",
+        q4: "¡Correcto! La práctica permite reconocer físicamente la rigidez de nuestros músculos, mandíbula o respiración corta para regularlas voluntariamente, mandándole señales de calma al cerebro.",
+        q5: "¡Correcto! La ínsula, oculta en la corteza, es descrita literalmente como la intérprete porque se encarga de traducir todas las señales viscerales internas en sensaciones conscientes.",
+        q6: "¡Correcto! El texto destaca que no se trata de agregar tareas complejas, sino de habitar conscientemente lo que ya haces: respirar, caminar descalzo, notar la temperatura del agua o comer.",
+        q7: "¡Correcto! Nazaret concluye de forma contundente que mientras que la mente construye narrativas y excusas que justifican el estrés, el cuerpo siempre revela el estado de salud interno de manera directa y sincera."
+    };
+
+    const wrongFeedback = "Respuesta incorrecta. Tómate una pausa consciente e inténtalo de nuevo.";
+
+    function checkAnswer(questionId, optionIndex, isCorrect) {
+        const questionDiv = document.getElementById(questionId);
+        const buttons = questionDiv.getElementsByClassName('option-btn');
+        const feedbackDiv = document.getElementById('fb-' + questionId);
+
+        // Limpiar estados anteriores
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('correct', 'incorrect');
+        }
+
+        if (isCorrect) {
+            buttons[optionIndex].classList.add('correct');
+            feedbackDiv.textContent = rationales[questionId];
+            feedbackDiv.className = "feedback correct-bg";
+        } else {
+            buttons[optionIndex].classList.add('incorrect');
+            feedbackDiv.textContent = wrongFeedback;
+            feedbackDiv.className = "feedback incorrect-bg";
+        }
+    }
+</script>
+
+</body>
+</html>
